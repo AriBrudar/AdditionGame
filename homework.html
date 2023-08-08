@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>PLAY</button>
+	<script>
+		const getNumber = () => Math.round(Math.random() * 100);
+
+		const isEven = (number) => number % 2 === 0;
+
+		const playRound = () => {
+    			const number1 = getNumber();
+    			const number2 = getNumber();
+				
+				const correctAnswer = number1 + number2;
+
+    			const userAnswer = Number(prompt(`Сложите числа ${number1} и ${number2}`));
+
+    			if(userAnswer == correctAnswer) {
+        			alert('Верно!');
+				return true;
+    			} else {
+        			alert ('Не верно!');
+        			return false;
+    			}
+		}
+
+		const playGame = () => {
+    			for (let i = 0; i < 3; i++) {
+    				const isCorrect = playRound();
+
+    				if (!isCorrect) {
+        				alert('Игра окончена');
+     					return;
+        			}
+    			}
+			alert('Вы выиграли!');
+		}
+
+		const button = document.querySelector('button');
+		button.addEventListener('click', playGame);
+		playGame();
+	</script>
+</body>
+</html>
